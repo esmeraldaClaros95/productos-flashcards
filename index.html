@@ -8,7 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#4f46e5"> <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="theme-color" content="#4f46e5"> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <style>
         /* Efecto 3D para voltear la tarjeta */
@@ -48,4 +50,39 @@
                 
                 <div class="backface-hidden absolute inset-0 bg-white border border-slate-200 rounded-2xl shadow-md p-6 flex flex-col justify-between items-center text-center">
                     <div class="text-slate-400 text-xs font-medium uppercase tracking-widest mt-2">Pregunta</div>
-                    <p id="card-question" class="text-lg md:text-xl font-semibold text-slate-8
+                    <p id="card-question" class="text-lg md:text-xl font-semibold text-slate-800 max-w-md overflow-y-auto my-auto px-2">¿Cargando pregunta...?</p>
+                    <div class="text-slate-400 text-xs flex items-center gap-1 mb-2 select-none">
+                        <span>🔄</span> Toca para voltear
+                    </div>
+                </div>
+
+                <div class="backface-hidden rotate-y-180 absolute inset-0 bg-indigo-600 border border-indigo-700 rounded-2xl shadow-lg p-6 flex flex-col justify-between items-center text-center text-white">
+                    <div class="text-indigo-200 text-xs font-medium uppercase tracking-widest mt-2">Respuesta</div>
+                    <p id="card-answer" class="text-base md:text-lg font-medium max-w-md overflow-y-auto my-auto px-2">Cargando respuesta...</p>
+                    <div class="text-indigo-200 text-xs flex items-center gap-1 mb-2 select-none">
+                        <span>🔄</span> Toca para regresar
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 w-full justify-between px-2 select-none">
+            <button onclick="prevCard()" class="flex-1 bg-white active:bg-slate-100 border border-slate-200 text-slate-700 font-semibold py-3 px-4 rounded-xl shadow-sm transition-colors cursor-pointer text-center touch-manipulation">
+                ← Anterior
+            </button>
+            <button onclick="nextCard()" class="flex-1 bg-indigo-600 active:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-colors cursor-pointer text-center touch-manipulation">
+                Siguiente →
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-4 text-xs text-slate-400 border-t border-slate-100 bg-white select-none hidden md:block">
+        Presiona la **Barra Espaciadora** para voltear | Flechas **Izquierda/Derecha** para navegar.
+    </footer>
+
+    <script src="flashcards.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
