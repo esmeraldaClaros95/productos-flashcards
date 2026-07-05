@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flashcards App</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4f46e5"> <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        /* Efecto 3D para voltear la tarjeta */
+        .perspective { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* Evita la selección de texto molesta al dar toques rápidos en el celular */
+        body {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between font-sans antialiased">
+
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm select-none">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <span>🗂️</span> Flashcards Studio
+            </h1>
+            <span id="progress-text" class="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                Tarjeta 0 de 0
+            </span>
+        </div>
+    </header>
+
+    <main class="max-w-xl w-full mx-auto p-4 flex-grow flex flex-col justify-center items-center gap-6">
+        
+        <span id="card-category" class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded select-none">
+            Categoría
+        </span>
+
+        <div class="perspective w-full h-80 cursor-pointer active:scale-[0.99] transition-transform duration-100" onclick="toggleCard()">
+            <div id="flashcard" class="preserve-3d duration-500 w-full h-full relative transform transition-transform">
+                
+                <div class="backface-hidden absolute inset-0 bg-white border border-slate-200 rounded-2xl shadow-md p-6 flex flex-col justify-between items-center text-center">
+                    <div class="text-slate-400 text-xs font-medium uppercase tracking-widest mt-2">Pregunta</div>
+                    <p id="card-question" class="text-lg md:text-xl font-semibold text-slate-8
